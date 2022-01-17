@@ -1,0 +1,16 @@
+<p
+ [hidden]="isHidden"
+>first works!</p>
+
+{{ name }}
+<button
+  (click)="showHide(inputMessage.value)"
+  class="btn btn-primary">
+  {{ buttonValue }}
+</button>
+<input
+  #inputMessage
+  type="text" class="form-control">
+
+La valeur de mon input est : {{inputContent}}
+<app-second></app-second>
