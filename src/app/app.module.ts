@@ -20,6 +20,7 @@ import { DetailComponent } from './cv/detail/detail.component';
 import { NgStyleComponent } from './directives/ng-style/ng-style.component';
 import { WordComponent } from './directives/word/word.component';
 import { AmpouleComponent } from './directives/ampoule/ampoule.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AmpouleComponent } from './directives/ampoule/ampoule.component';
     DetailComponent,
     NgStyleComponent,
     WordComponent,
-    AmpouleComponent
+    AmpouleComponent,
+    HighlightDirective
   ],
     imports: [
         BrowserModule,
