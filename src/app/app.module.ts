@@ -19,6 +19,7 @@ import { ListComponent } from './cv/list/list.component';
 import { DetailComponent } from './cv/detail/detail.component';
 import { NgStyleComponent } from './directives/ng-style/ng-style.component';
 import { WordComponent } from './directives/word/word.component';
+import { AmpouleComponent } from './directives/ampoule/ampoule.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WordComponent } from './directives/word/word.component';
     ListComponent,
     DetailComponent,
     NgStyleComponent,
-    WordComponent
+    WordComponent,
+    AmpouleComponent
   ],
     imports: [
         BrowserModule,
