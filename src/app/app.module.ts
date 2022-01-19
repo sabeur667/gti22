@@ -26,6 +26,9 @@ import { UsdToBtcPipe } from './pipes/usd-to-btc.pipe';
 import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
 import {LoggerService} from "./services/logger.service";
 import {SayHelloService} from "./services/say-hello.service";
+import { TodoComponent } from './todo/todo/todo.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -47,12 +50,15 @@ import {SayHelloService} from "./services/say-hello.service";
     HighlightDirective,
     RainbowDirective,
     UsdToBtcPipe,
-    DefaultImagePipe
+    DefaultImagePipe,
+    TodoComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
     ],
   providers: [],
   bootstrap: [AppComponent]
