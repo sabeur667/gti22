@@ -23,6 +23,9 @@ import { AmpouleComponent } from './directives/ampoule/ampoule.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
 import { UsdToBtcPipe } from './pipes/usd-to-btc.pipe';
+import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
+import {LoggerService} from "./services/logger.service";
+import {SayHelloService} from "./services/say-hello.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { UsdToBtcPipe } from './pipes/usd-to-btc.pipe';
     AmpouleComponent,
     HighlightDirective,
     RainbowDirective,
-    UsdToBtcPipe
+    UsdToBtcPipe,
+    DefaultImagePipe
   ],
     imports: [
         BrowserModule,
