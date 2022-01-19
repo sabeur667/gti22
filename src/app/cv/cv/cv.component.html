@@ -2,12 +2,13 @@
   <div class="col">
     <div class="alert alert-primary">
       {{ now | date: 'full' | uppercase }}
-      <p>
-        {{1 | usdToBtc }}
-        {{1 | usdToBtc: true | currency }}
+<!--      <p>-->
+<!--        {{1 | usdToBtc }}-->
+<!--        {{1 | usdToBtc: true | currency }}-->
 
-      </p>
+<!--      </p>-->
     </div>
     <app-list (forwardCv)="getSelectedCv($event)"></app-list></div>
   <div class="col"><app-detail [cv]="selectedCv"></app-detail></div>
 </div>
+<app-embauche></app-embauche>
