@@ -22,6 +22,7 @@ import { WordComponent } from './directives/word/word.component';
 import { AmpouleComponent } from './directives/ampoule/ampoule.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
+import { UsdToBtcPipe } from './pipes/usd-to-btc.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RainbowDirective } from './directives/rainbow.directive';
     WordComponent,
     AmpouleComponent,
     HighlightDirective,
-    RainbowDirective
+    RainbowDirective,
+    UsdToBtcPipe
   ],
     imports: [
         BrowserModule,
