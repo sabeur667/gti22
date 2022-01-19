@@ -21,6 +21,7 @@ import { NgStyleComponent } from './directives/ng-style/ng-style.component';
 import { WordComponent } from './directives/word/word.component';
 import { AmpouleComponent } from './directives/ampoule/ampoule.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { RainbowDirective } from './directives/rainbow.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     NgStyleComponent,
     WordComponent,
     AmpouleComponent,
-    HighlightDirective
+    HighlightDirective,
+    RainbowDirective
   ],
     imports: [
         BrowserModule,
