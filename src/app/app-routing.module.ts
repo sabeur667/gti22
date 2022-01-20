@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'cv', component: CvComponent},
   {path: 'todo', component: TodoComponent},
   {path: 'word', component: WordComponent},
-  {path: 'color', component: ColorComponent},
+  {path: 'color/:couleur', component: ColorComponent},
 ];
 
 @NgModule({
