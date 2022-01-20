@@ -6,14 +6,26 @@ import {WordComponent} from "./directives/word/word.component";
 import {FirstComponent} from "./components/first/first.component";
 import {ColorComponent} from "./components/color/color.component";
 import {DetailCvComponent} from "./cv/detail-cv/detail-cv.component";
+import {BackComponent} from "./components/back/back.component";
+import {SecondComponent} from "./components/second/second.component";
+import {FrontComponent} from "./components/front/front.component";
+import {NF404Component} from "./components/nf404/nf404.component";
 
 const routes: Routes = [
   {path: '', component: FirstComponent},
-  {path: 'cv', component: CvComponent},
-  {path: 'cv/:id', component: DetailCvComponent},
-  {path: 'todo', component: TodoComponent},
-  {path: 'word', component: WordComponent},
-  {path: 'color/:couleur', component: ColorComponent},
+  {path: 'cv', children: [
+      {path: '', component: CvComponent},
+      {path: ':id', component: DetailCvComponent},
+  ]},
+  {path: 'admin', component: BackComponent, children: [
+      {path: 'second', component: SecondComponent}
+  ]},
+  {path: '', component: FrontComponent, children: [
+      {path: 'todo', component: TodoComponent},
+      {path: 'word', component: WordComponent},
+      {path: 'color/:couleur', component: ColorComponent},
+  ]},
+  {path: '**', component: NF404Component}
 ];
 
 @NgModule({
