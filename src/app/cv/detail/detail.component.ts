@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Cv} from "../model/cv";
 import {EmbaucheService} from "../services/embauche.service";
 import {ToastrService} from "ngx-toastr";
+import {CvService} from "../services/cv.service";
+import {distinctUntilChanged} from "rxjs/operators";
 
 @Component({
   selector: 'app-detail',
@@ -13,10 +15,18 @@ export class DetailComponent implements OnInit {
   @Input() cv: Cv | null = null;
   constructor(
     private embaucheService: EmbaucheService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private cvService: CvService
   ) { }
 
   ngOnInit(): void {
+    this.cvService.selectCvSubject
+      .pipe(
+        distinctUntilChanged()
+      )
+      .subscribe(
+      (cvJdid) => this.cv = cvJdid
+    )
   }
   embaucher() {
     if (this.embaucheService.embaucher(this.cv)) {

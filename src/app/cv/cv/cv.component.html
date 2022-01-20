@@ -8,7 +8,10 @@
 
 <!--      </p>-->
     </div>
-    <app-list (forwardCv)="getSelectedCv($event)"></app-list></div>
-  <div class="col"><app-detail [cv]="selectedCv"></app-detail></div>
+    <div class="alert alert-warning">
+      Le nombre de click est : {{ nb }}
+    </div>
+    <app-list></app-list></div>
+  <div class="col"><app-detail></app-detail></div>
 </div>
 <app-embauche></app-embauche>

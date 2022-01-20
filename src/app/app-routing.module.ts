@@ -10,9 +10,11 @@ import {BackComponent} from "./components/back/back.component";
 import {SecondComponent} from "./components/second/second.component";
 import {FrontComponent} from "./components/front/front.component";
 import {NF404Component} from "./components/nf404/nf404.component";
+import {LoginComponent} from "./auth/login/login.component";
 
 const routes: Routes = [
   {path: '', component: FirstComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'cv', children: [
       {path: '', component: CvComponent},
       {path: ':id', component: DetailCvComponent},
