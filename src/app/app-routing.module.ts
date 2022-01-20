@@ -5,10 +5,12 @@ import {TodoComponent} from "./todo/todo/todo.component";
 import {WordComponent} from "./directives/word/word.component";
 import {FirstComponent} from "./components/first/first.component";
 import {ColorComponent} from "./components/color/color.component";
+import {DetailCvComponent} from "./cv/detail-cv/detail-cv.component";
 
 const routes: Routes = [
   {path: '', component: FirstComponent},
   {path: 'cv', component: CvComponent},
+  {path: 'cv/:id', component: DetailCvComponent},
   {path: 'todo', component: TodoComponent},
   {path: 'word', component: WordComponent},
   {path: 'color/:couleur', component: ColorComponent},
