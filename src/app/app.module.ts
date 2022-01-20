@@ -31,6 +31,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterSimulatorComponent } from './components/router-simulator/router-simulator.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DefaultImagePipe,
     TodoComponent,
     EmbaucheComponent,
-    NavbarComponent
+    NavbarComponent,
+    RouterSimulatorComponent
   ],
     imports: [
         BrowserModule,
