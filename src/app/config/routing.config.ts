@@ -1,3 +1,4 @@
 export const MES_ROUTES = {
-  'cvList' : 'cv'
+  'cvList' : 'cv',
+  'login' : 'login',
 }
