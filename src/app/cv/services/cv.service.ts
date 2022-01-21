@@ -45,15 +45,14 @@ export class CvService {
     return false
   }
   deleteCv(cv: Cv): Observable<DeleteResponseDto> {
-    const params = new HttpParams().set('access_token', localStorage.getItem('token')??'');
-    return this.http.delete<DeleteResponseDto>(API.cv + cv.id, {params});
+    // const params = new HttpParams().set('access_token', localStorage.getItem('token')??'');
+    return this.http.delete<DeleteResponseDto>(API.cv + cv.id);
   }
   selectCv(cv: Cv) {
     this.selectCvSubject.next(cv);
   }
   addCv(cv: Cv): Observable<Cv> {
-    const headers = new HttpHeaders().set('Authorization', localStorage.getItem('token')??'');
-    return this.http.post<Cv>(API.cv, cv, {headers});
+    return this.http.post<Cv>(API.cv, cv);
   }
   addFakeCv(cv: Cv) {
     cv.id = this.cvs[this.cvs.length - 1].id + 1;
