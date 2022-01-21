@@ -23,7 +23,6 @@ export class AddCvComponent implements OnInit {
 
   addCv(cv: Cv) {
     const cvs = this.cvService.getCvs();
-    cv.id = cvs[cvs.length - 1].id + 1;
     this.cvService.addCv(cv);
     this.toastr.success(`Le cv de ${cv.firstname} ${cv.name} a été ajouté avec succès`);
     this.router.navigate([MES_ROUTES.cvList]);

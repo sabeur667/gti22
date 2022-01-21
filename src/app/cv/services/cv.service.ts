@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Cv} from "../model/cv";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {API} from "../../config/api.config";
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +10,30 @@ import {Subject} from "rxjs";
 export class CvService {
   private cvs: Cv[] = [];
   selectCvSubject = new Subject<Cv>();
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     this.cvs = [
       new Cv(1, 'sellaouti', 'aymen', 'teacher', '', '123',39),
       new Cv(2, 'sellaouti', 'aymen', 'teacher', '              ', '123',39),
       new Cv(3, 'sellaouti', 'aymen', 'teacher', 'rotating_card_profile.png', '123',39),
     ]
   }
-  getCvs(): Cv[] {
+  getFakeCvs(): Cv[] {
     return this.cvs;
   }
-  getCvById(id: number): Cv | null {
+  getCvs(): Observable<Cv[]> {
+    return this.http.get<Cv[]>(API.cv);
+  }
+  getFakeCvById(id: number): Cv | null {
     return this.cvs.find(
       (cv) => cv.id === +id
     ) ?? null;
   }
-  deleteCv(cv: Cv | null): boolean {
+  getCvById(id: number): Observable<Cv> {
+    return this.http.get<Cv>(API.cv + id);
+  }
+  deleteFakeCv(cv: Cv | null): boolean {
     if (cv) {
       const index = this.cvs.indexOf(cv);
       if (index > -1) {
@@ -33,11 +43,14 @@ export class CvService {
     }
     return false
   }
+  deleteCv(cv: Cv): Observable<any> {
+    return this.http.delete<any>(API.cv + cv.id);
+  }
   selectCv(cv: Cv) {
     this.selectCvSubject.next(cv);
   }
-
   addCv(cv: Cv) {
+    cv.id = this.cvs[this.cvs.length - 1].id + 1;
     this.cvs.push(cv);
   }
 }

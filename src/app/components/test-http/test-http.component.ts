@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Todo} from "../../todo/model/todo";
 
 @Component({
   selector: 'app-test-http',
@@ -13,7 +14,7 @@ export class TestHttpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/todos').subscribe(
+    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos').subscribe(
       data => {
         console.log(data);
       }

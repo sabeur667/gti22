@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Cv} from "../model/cv";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CvService} from "../services/cv.service";
@@ -12,31 +12,38 @@ import {ToastrService} from "ngx-toastr";
 })
 export class DetailCvComponent implements OnInit {
   cv: Cv | null = null;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private cvService: CvService,
     private router: Router,
     private toaster: ToastrService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       (params) => {
-        this.cv = this.cvService.getCvById(params['id']);
-        if (!this.cv) {
-          // rediriger vers la liste des cvs
-          this.router.navigate([MES_ROUTES.cvList]);
-        }
+        this.cvService.getCvById(params['id']).subscribe(
+          (cv) => this.cv = cv,
+          (erreur) => this.router.navigate([MES_ROUTES.cvList])
+        );
       }
     )
   }
 
   deleteCv() {
-    if (this.cvService.deleteCv(this.cv)) {
-      this.toaster.success('Cv supprimé avec succès');
-      this.router.navigate([MES_ROUTES.cvList]);
-    } else {
-      this.toaster.error('Problème contacter l admin');
+    if (this.cv) {
+      this.cvService.deleteCv(this.cv).subscribe(
+        (success) => {
+          this.toaster.success('Cv supprimé avec succès');
+          this.router.navigate([MES_ROUTES.cvList]);
+        },
+        (erreur) => {
+          this.toaster.error('Problème contacter l admin');
+          console.log(erreur);
+        }
+      );
     }
   }
 }
