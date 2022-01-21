@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Cv} from "../model/cv";
 import {Observable, Subject} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {API} from "../../config/api.config";
+import {DeleteResponseDto} from "../../dtos/cv/delete-response.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -43,13 +44,18 @@ export class CvService {
     }
     return false
   }
-  deleteCv(cv: Cv): Observable<any> {
-    return this.http.delete<any>(API.cv + cv.id);
+  deleteCv(cv: Cv): Observable<DeleteResponseDto> {
+    const params = new HttpParams().set('access_token', localStorage.getItem('token')??'');
+    return this.http.delete<DeleteResponseDto>(API.cv + cv.id, {params});
   }
   selectCv(cv: Cv) {
     this.selectCvSubject.next(cv);
   }
-  addCv(cv: Cv) {
+  addCv(cv: Cv): Observable<Cv> {
+    const headers = new HttpHeaders().set('Authorization', localStorage.getItem('token')??'');
+    return this.http.post<Cv>(API.cv, cv, {headers});
+  }
+  addFakeCv(cv: Cv) {
     cv.id = this.cvs[this.cvs.length - 1].id + 1;
     this.cvs.push(cv);
   }

@@ -22,22 +22,14 @@ export class AddCvComponent implements OnInit {
   }
 
   addCv(cv: Cv) {
-    const cvs = this.cvService.getCvs();
-    this.cvService.addCv(cv);
-    this.toastr.success(`Le cv de ${cv.firstname} ${cv.name} a été ajouté avec succès`);
-    this.router.navigate([MES_ROUTES.cvList]);
-    //   .subscribe(
-    //   {
-    //     next: (cv) => {
-    //       this.toastr.success(`Le cv de ${cv.firstname} ${cv.name} a été ajouté avec succès`);
-    //       this.router.navigate(['cv']);
-    //     },
-    //     error: () => {
-    //       this.toastr.error(`Erreur système, veuillez contacter l'admin`);
-    //     }
-    //   }
-    // );
-    // this.toastr.success(`Le cv de ${formumaire.value.name} a été ajouté avec succès`);
-    // this.router.navigate(['cv']);
+    this.cvService.addCv(cv).subscribe(
+      (cv) => {
+        this.toastr.success(`Le cv de ${cv.firstname} ${cv.name} a été ajouté avec succès`);
+        this.router.navigate([MES_ROUTES.cvList]);
+      },
+      (erreur) => {
+        this.toastr.error(`Erreur système, veuillez contacter l'admin`);
+      }
+    );
   }
 }
