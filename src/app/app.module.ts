@@ -39,6 +39,9 @@ import { NF404Component } from './components/nf404/nf404.component';
 import { TestFormComponent } from './components/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { TestObservableComponent } from './components/test-observable/test-observable.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import {HttpClientModule} from "@angular/common/http";
+import { TestHttpComponent } from './components/test-http/test-http.component';
 
 @NgModule({
   declarations: [
@@ -71,14 +74,19 @@ import { TestObservableComponent } from './components/test-observable/test-obser
     NF404Component,
     TestFormComponent,
     LoginComponent,
-    TestObservableComponent
+    TestObservableComponent,
+    AddCvComponent,
+    TestHttpComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
+        HttpClientModule,
         BrowserAnimationsModule, // required animations module
+
         ToastrModule.forRoot(), // ToastrModule added
+
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -36,4 +36,8 @@ export class CvService {
   selectCv(cv: Cv) {
     this.selectCvSubject.next(cv);
   }
+
+  addCv(cv: Cv) {
+    this.cvs.push(cv);
+  }
 }

@@ -11,7 +11,12 @@
          routerLinkActive="active text-primary"
          [routerLinkActiveOptions]="{exact: true}"
       >Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" [routerLink]="['cv']" routerLinkActive="active text-primary">Cv</a>
+      <a class="nav-item nav-link"
+         [routerLink]="['cv']"
+         routerLinkActive="active text-primary"
+         [routerLinkActiveOptions]="{exact: true}"
+      >Cv</a>
+      <a class="nav-item nav-link" [routerLink]="['cv/add']" routerLinkActive="active text-primary">Add Cv</a>
       <a class="nav-item nav-link" [routerLink]="['todo']" routerLinkActive="active text-primary">Todo</a>
       <a class="nav-item nav-link" [routerLink]="['word']" routerLinkActive="active text-primary">Word</a>
       <a class="nav-item nav-link" [routerLink]="['color', 'red']" routerLinkActive="active text-primary">Color</a>
